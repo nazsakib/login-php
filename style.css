@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: darkslateblue;
+}
+.focus-within\:border-shadow {
+    transition: border-color 0.3s;
+}
+.focus-within\:border-shadow input:focus {
+    outline: none;
+    border-color: rgba(66, 153, 225, 0.5);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
