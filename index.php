@@ -1,14 +1,28 @@
 <!-- php -->
 
 <?php
-define('EMAIL', 'hello@gmail.com');
-define('PASSWORD', 'hello123');
+$title = 'Homepage';
+
+include('header.php'); //header php file
+
+// if(user_logged_in())[
+//     header('location: success.php')
+// ];
 
 if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
+    $checkbox = isset($POST['checkbox']);
+    
+    define('EMAIL', 'hello@gmail.com');
+    define('PASSWORD', 'hello123');
+
 
     if($email == EMAIL && $password == PASSWORD) {
+
+        $_SESSION['success'] = 'Done';
+        setcookie('fixed', 'running', time() + 60*60*24*365);
+
         header('location: success.php');
     }
     else {
@@ -19,24 +33,10 @@ if(isset($_POST['submit'])) {
 ?>
 
 <!-- htmla -->
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Registration Form</title>
-
-        <!-- Include Tailwind CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="style.css" />
-    </head>
-
-    <body>
-        <div class="pt-32 flex-center">
+        
+        <!-- main area -->
+        <main class="main-home_area py-8 flex-center">
             <div class="container">
                 <div
                     class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md"
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
                         >
                             Registration Form
                         </h2>
-                        <form action="" method="post">
+                        <form action="" method="POST">
                             <div class="flex mb-4">
                                 <div class="mr-2 flex-1">
                                     <label
@@ -112,6 +112,10 @@ if(isset($_POST['submit'])) {
                                     required
                                 />
                             </div>
+                            <div class="mb-4 font-semibold flex content-center gap-2">
+                                <input type="checkbox" name="checkbox" id="check">
+                                <label for="checkbox">Keep me logged in.</label>
+                            </div>
                             <p class="text-center px-4 my-4 text-red-900 font-bold">
                                 <?php 
                                 if(isset($fail)) {
@@ -132,6 +136,10 @@ if(isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </main>
+
+
+        <!-- footer php file -->
+<?php
+include('footer.php');
+?>
