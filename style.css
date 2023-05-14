@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+.main-home_area {
     background-color: darkslateblue;
 }
 .focus-within\:border-shadow {
@@ -18,4 +18,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* about */
+.main-about_area {
+    background-color: darkslateblue;
+}
+
+/* contact */
+.main-contact-area {
+    background-color: darkslateblue;
 }
